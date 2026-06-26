@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0f172a] text-slate-200 p-4 md:p-8 pt-20 md:pt-24">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-6 gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight text-white flex items-center gap-3">
+                    Welcome Back, Suyog <span class="animate-bounce">👋</span>
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">Manage, analyze, and track community civic issues with live telemetry routing metrics.</p>
+            </div>
+            
+            <div class="bg-[#1e293b]/60 border border-slate-700/50 px-4 py-2 rounded-xl flex items-center gap-2.5 text-xs font-mono text-sky-400">
+                <i class="fa-solid fa-clock"></i>
+                <span id="live-timestamp">System Online</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            
+            <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 flex items-center justify-between shadow-xl relative overflow-hidden group transition-all duration-300 hover:border-sky-500/30 hover:-translate-y-1">
+                <div class="space-y-2">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Total Reports</span>
+                    <h3 class="text-4xl font-black text-white tracking-tight">124</h3>
+                    <span class="text-[11px] text-emerald-400 font-medium flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up"></i> +12% this week</span>
+                </div>
+                <div class="p-4 bg-sky-500/10 text-sky-400 rounded-2xl text-2xl group-hover:bg-sky-500 group-hover:text-slate-900 transition-all duration-300 shadow-inner">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+            </div>
+
+            <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 flex items-center justify-between shadow-xl relative overflow-hidden group transition-all duration-300 hover:border-emerald-500/30 hover:-translate-y-1">
+                <div class="space-y-2">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Resolved Cases</span>
+                    <h3 class="text-4xl font-black text-white tracking-tight">87</h3>
+                    <span class="text-[11px] text-emerald-400 font-medium flex items-center gap-1"><i class="fa-solid fa-circle-check"></i> 70.1% Success Rate</span>
+                </div>
+                <div class="p-4 bg-emerald-500/10 text-emerald-400 rounded-2xl text-2xl group-hover:bg-emerald-500 group-hover:text-slate-900 transition-all duration-300 shadow-inner">
+                    <i class="fa-solid fa-square-check"></i>
+                </div>
+            </div>
+
+            <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 flex items-center justify-between shadow-xl relative overflow-hidden group transition-all duration-300 hover:border-amber-500/30 hover:-translate-y-1">
+                <div class="space-y-2">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">In Progress</span>
+                    <h3 class="text-4xl font-black text-white tracking-tight">25</h3>
+                    <span class="text-[11px] text-amber-400 font-medium flex items-center gap-1"><i class="fa-solid fa-spinner animate-spin text-[10px]"></i> Active Dispatch Team</span>
+                </div>
+                <div class="p-4 bg-amber-500/10 text-amber-400 rounded-2xl text-2xl group-hover:bg-amber-500 group-hover:text-slate-900 transition-all duration-300 shadow-inner">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+            </div>
+
+            <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 flex items-center justify-between shadow-xl relative overflow-hidden group transition-all duration-300 hover:border-rose-500/30 hover:-translate-y-1">
+                <div class="space-y-2">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">High Priority</span>
+                    <h3 class="text-4xl font-black text-white tracking-tight">12</h3>
+                    <span class="text-[11px] text-rose-400 font-medium flex items-center gap-1"><i class="fa-solid fa-triangle-exclamation animate-pulse"></i> Needs Quick Action</span>
+                </div>
+                <div class="p-4 bg-rose-500/10 text-rose-400 rounded-2xl text-2xl group-hover:bg-rose-500 group-hover:text-slate-900 transition-all duration-300 shadow-inner">
+                    <i class="fa-solid fa-radiation"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 shadow-xl space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Issue Category Distribution</h3>
+                            <p class="text-xs text-slate-400">Analytical data segmentation metrics mapping out municipal infrastructure flaws.</p>
+                        </div>
+                        <span class="text-xs bg-[#111c2e] px-2.5 py-1 rounded-lg text-slate-400 font-mono">Live Matrix</span>
+                    </div>
+                    
+                    <div class="space-y-4 pt-2">
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-semibold"><span class="text-slate-300">Potholes & Broken Roads</span><span class="text-sky-400">42%</span></div>
+                            <div class="w-full bg-[#111c2e] rounded-full h-2.5 overflow-hidden border border-slate-800"><div class="bg-sky-400 h-full rounded-full transition-all duration-500" style="width: 42%"></div></div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-semibold"><span class="text-slate-300">Garbage Dumping Pile</span><span class="text-amber-400">28%</span></div>
+                            <div class="w-full bg-[#111c2e] rounded-full h-2.5 overflow-hidden border border-slate-800"><div class="bg-amber-400 h-full rounded-full transition-all duration-500" style="width: 28%"></div></div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-semibold"><span class="text-slate-300">Water Main Leakage</span><span class="text-teal-400">18%</span></div>
+                            <div class="w-full bg-[#111c2e] rounded-full h-2.5 overflow-hidden border border-slate-800"><div class="bg-teal-400 h-full rounded-full transition-all duration-500" style="width: 18%"></div></div>
+                        </div>
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-semibold"><span class="text-slate-300">Broken Street Lights</span><span class="text-rose-400">12%</span></div>
+                            <div class="w-full bg-[#111c2e] rounded-full h-2.5 overflow-hidden border border-slate-800"><div class="bg-rose-400 h-full rounded-full transition-all duration-500" style="width: 12%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 shadow-xl flex flex-col h-full">
+                    <div class="border-b border-slate-800 pb-4 mb-5">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bolt text-amber-400 animate-pulse"></i> Recent Activity Logs
+                        </h3>
+                        <p class="text-xs text-slate-400">Real-time system state updates.</p>
+                    </div>
+
+                    <div class="relative border-l-2 border-slate-700/50 ml-3 pl-6 space-y-6">
+                        
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-0 bg-sky-500/20 text-sky-400 border-2 border-sky-400 w-4 h-4 rounded-full flex items-center justify-center ring-4 ring-[#1e293b]"></span>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Pothole Report Submitted</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Ward No. 4, Main Crossroad Segment.</p>
+                                <span class="text-[10px] text-slate-500 font-mono block mt-1"><i class="fa-solid fa-clock-rotate-left"></i> 2 hours ago</span>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-0 bg-emerald-500/20 text-emerald-400 border-2 border-emerald-400 w-4 h-4 rounded-full flex items-center justify-center ring-4 ring-[#1e293b]"></span>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Street Light Fixed</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Dispatched crew replaced sodium arrays completely.</p>
+                                <span class="text-[10px] text-slate-500 font-mono block mt-1"><i class="fa-solid fa-clock-rotate-left"></i> Yesterday</span>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <span class="absolute -left-[31px] top-0 bg-amber-500/20 text-amber-400 border-2 border-amber-400 w-4 h-4 rounded-full flex items-center justify-center ring-4 ring-[#1e293b]"></span>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Water Leakage Marked Under Review</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Admin priority matrix reassigned case logic level.</p>
+                                <span class="text-[10px] text-slate-500 font-mono block mt-1"><i class="fa-solid fa-clock-rotate-left"></i> 3 days ago</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Injects an elegant live data stream localized date presentation inside the top badge component
+    function updateLiveTime() {
+        const timestampBadge = document.getElementById('live-timestamp');
+        const now = new Date();
+        timestampBadge.innerHTML = `<i class="fa-solid fa-circle text-emerald-400 animate-pulse text-[8px] mr-1"></i> Live Tracker: ${now.toLocaleDateString()} | ${now.toLocaleTimeString()}`;
+    }
+    setInterval(updateLiveTime, 1000);
+    updateLiveTime();
+</script>
+{% endblock %}

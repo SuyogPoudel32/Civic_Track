@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+
+{%block content%}
+
+<div class="w-full flex justify-center p-5">
+
+    <form  method="POST" id="form"
+        class="mt-[5rem] w-full  md:w-[600px] bg-white/10 border border-white/15 p-10 max-[500px]:p-[25px] rounded-[25px]">
+
+        <h1 class="text-white text-[32px] font-bold mb-[10px]">
+            Create Account
+        </h1>
+
+        <p class="text-slate-300 mb-[30px]">
+            Join and help improve your city
+        </p>
+
+        <!-- Full Name -->
+        <div class="flex items-center bg-white/10 rounded-[15px] p-[15px] mb-[20px]">
+            <i class="fa fa-user text-slate-400"></i>
+
+            <input id="full_name" name="full_name" type="text" placeholder="Full Name"
+                class="flex-1 bg-transparent border-none outline-none text-white pl-3 text-[15px] placeholder:text-slate-400">
+        </div>
+
+        <!-- Email -->
+        <div class="flex items-center bg-white/10 rounded-[15px] p-[15px] mb-[20px]">
+            <i class="fa fa-envelope text-slate-400"></i>
+
+            <input id="email" name="email" type="email" placeholder="Email Address"
+                class="flex-1 bg-transparent border-none outline-none text-white pl-3 text-[15px] placeholder:text-slate-400">
+        </div>
+        <!-- Ward Number -->
+        <div class="flex items-center bg-white/10 rounded-[15px] p-[15px] mb-[20px]">
+            <i class="fa-solid fa-location-crosshairs text-slate-400"></i>
+
+            <input id="ward_no" name="ward_no" type="text" placeholder="Ward No"
+                class="flex-1 bg-transparent border-none outline-none text-white pl-3 text-[15px] placeholder:text-slate-400">
+        </div>
+
+        <!-- Phone -->
+        <div class="flex items-center bg-white/10 rounded-[15px] p-[15px] mb-[20px]">
+            <i class="fa fa-phone text-slate-400"></i>
+
+            <input id="phone_no" name="phone_no" type="text" placeholder="Phone Number"
+                class="flex-1 bg-transparent border-none outline-none text-white pl-3 text-[15px] placeholder:text-slate-400">
+        </div>
+
+        <!-- Password -->
+        <div class="relative flex items-center bg-white/10 rounded-[15px] p-[15px] mb-[20px]">
+            <i class="fa fa-lock text-slate-400"></i>
+
+            <input name="register_password" type="password" id="register_password" placeholder="Password" class="flex-1 bg-transparent border-none outline-none
+                       text-white pl-3 text-[15px]
+                       placeholder:text-slate-400">
+            <!-- fa fa-eye text-slate-400 cursor-pointer absolute right-7 -->
+            <i class="fa fa-eye text-slate-400 cursor-pointer" onclick="togglePassword('register_password', this)">
+            </i>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="relative flex items-center bg-white/10 rounded-[15px] p-[15px] mb-[20px]">
+            <i class="fa fa-lock text-slate-400"></i>
+
+            <input name="confirm_password" type="password" id="confirm_password" placeholder="Confirm Password"
+                class="flex-1 bg-transparent border-none outline-none text-white pl-3 text-[15px] placeholder:text-slate-400">
+
+            <i class="fa fa-eye text-slate-400 cursor-pointer" onclick="togglePassword('confirm_password', this)">
+            </i>
+            </i>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="create_account_btn" type="submit"
+            class="w-full p-[15px] rounded-[15px] text-[16px] font-bold cursor-pointer bg-sky-400 text-black transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_10px_20px_rgba(56,189,248,0.4)]">
+
+            Create Account
+
+        </button>
+
+        <!-- Divider -->
+        <div class="text-center my-[20px] text-slate-400">
+            OR
+        </div>
+
+        <!-- Login Link -->
+        <a href="login.html" class="block text-center no-underline text-sky-400">
+
+            Already Have Account?
+
+        </a>
+
+    </form>
+
+</div>
+
+
+{%endblock%}
+
+{% block extra_js %}
+
+<script src="{{ url_for('static', filename='src/js/togglePassword.js') }}"></script>
+<script src="{{ url_for('static', filename='src/js/register.js') }}"></script>
+
+{% endblock %}

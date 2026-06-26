@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dist/output.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../static/src/js/base.js"></script>
+    <script>
+       const jsonString = localStorage.getItem("user_credentials");
+
+if (jsonString) {
+    const login = document.getElementById("login");
+
+    login.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "info",
+            title: "You are already logged in",
+            showConfirmButton: false,
+            timer: 3000
+        });
+    });
+}
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

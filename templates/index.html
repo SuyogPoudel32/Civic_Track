@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class=" flex justify-center flex-col items-center text-center px-[10%]">
+    <div class="h-full mt-[15rem]">
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-tight text-white">
+            Report Civic Problems <span class="text-sky-400">Faster Than Ever</span>
+        </h1>
+
+        <p class="text-xl text-slate-300 mb-8">
+            Help your city by reporting potholes,
+            garbage dumping, water leakage and more.
+        </p>
+
+        <div class="flex justify-center gap-5">
+            <a href="#"
+                class="no-underline px-8 py-4 rounded-full bg-sky-400 text-black transition duration-300 hover:-translate-y-1">
+                Report Issue
+            </a>
+
+            <a href="#"
+                class="no-underline px-8 py-4 rounded-full border border-white text-white transition duration-300 hover:-translate-y-1">
+                Track Reports
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="flex flex-wrap gap-5 px-[8%] py-20">
+    {% for reports in all_reports %}
+    {% for key,value in reports.items() %}
+
+            <div
+        class="flex-1 min-w-[220px] bg-slate-800 p-8 rounded-[20px] text-center transition duration-300 hover:-translate-y-2.5">
+        <h2 class="text-sky-400 text-4xl font-bold mb-2">{{value}}</h2>
+        <p class="text-slate-300">{{key}}</p>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    </div> 
+</section>
+
+
+<section class="px-[8%] py-20">
+    <h2 class="text-center text-4xl font-bold mb-12">
+        Recent Issues
+    </h2>
+
+    <div class="flex flex-wrap gap-6">
+        <!-- Card 1 -->
+
+        <div
+            class="flex-1 min-w-[300px] bg-slate-800 rounded-[20px] overflow-hidden transition duration-300 hover:-translate-y-2.5">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd"
+                class="w-full h-[220px] object-cover" alt="Pothole">
+            <div class="p-5">
+                <h3 class="text-xl font-semibold mb-3">
+                    Pothole Near Hospital
+                </h3>
+
+                <span class="px-3 py-1 rounded-full text-sm bg-red-500 text-white">
+                    High Priority
+                </span>
+
+                <p class="my-4 text-slate-300">
+                    Large pothole creating traffic issues.
+                </p>
+
+                <button class="bg-sky-400 text-black px-5 py-2 rounded-full cursor-pointer">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+            class="flex-1 min-w-[300px] bg-slate-800 rounded-[20px] overflow-hidden transition duration-300 hover:-translate-y-2.5">
+            <img src="https://images.unsplash.com/photo-1528323273322-d81458248d40"
+                class="w-full h-[220px] object-cover" alt="Garbage">
+
+            <div class="p-5">
+                <h3 class="text-xl font-semibold mb-3">
+                    Garbage Dumping
+                </h3>
+                <span class="px-3 py-1 rounded-full text-sm bg-orange-500 text-white">
+                    Medium Priority
+                </span>
+
+                <p class="my-4 text-slate-300">
+                    Garbage accumulating in residential area.
+                </p>
+
+                <button class="bg-sky-400 text-black px-5 py-2 rounded-full cursor-pointer">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+            class="flex-1 min-w-[300px] bg-slate-800 rounded-[20px] overflow-hidden transition duration-300 hover:-translate-y-2.5">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+                class="w-full h-[220px] object-cover" alt="Street Light">
+
+            <div class="p-5">
+                <h3 class="text-xl font-semibold mb-3">
+                    Broken Street Light
+                </h3>
+
+                <span class="px-3 py-1 rounded-full text-sm bg-green-500 text-white">
+                    Low Priority
+                </span>
+
+                <p class="my-4 text-slate-300">
+                    Street light not functioning.
+                </p>
+
+                <button class="bg-sky-400 text-black px-5 py-2 rounded-full cursor-pointer">
+                    View Details
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center p-10 bg-slate-950 mt-20">
+    <h3 class="text-2xl font-bold mb-2">
+        CivicTrack
+    </h3>
+
+    <p class="text-slate-400">
+        Building smarter and safer communities.
+    </p>
+</footer>
+
+{% endblock %}

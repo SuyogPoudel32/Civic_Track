@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0f172a] text-slate-200 p-4 md:p-8 pt-20 md:pt-24">
+    <div class="max-w-7xl mx-auto space-y-8">
+
+        <div
+            class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-6 gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold tracking-tight text-white flex items-center gap-3">
+                    Welcome Back, {{full_name}} <span class="animate-bounce">👋</span>
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">Global Civic Console — Tracking all active community issues
+                    across regional jurisdictions.</p>
+            </div>
+
+            <div
+                class="bg-[#1e293b]/60 border border-slate-700/50 px-4 py-2 rounded-xl flex items-center gap-2.5 text-xs font-mono text-sky-400 shadow-lg">
+                <i class="fa-solid fa-circle text-emerald-400 animate-pulse text-[8px]"></i>
+                <span id="live-timestamp">Loading System Feed...</span>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-5">
+            <div
+                class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-5 flex items-center justify-between shadow-xl transition hover:-translate-y-1 duration-200 w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]">
+                <div class="space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Total Reports</span>
+                    <h3 class="text-3xl font-black text-white">124</h3>
+                </div>
+                <div class="p-3 bg-sky-500/10 text-sky-400 rounded-xl text-xl">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+            </div>
+            <div
+                class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-5 flex items-center justify-between shadow-xl transition hover:-translate-y-1 duration-200 w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]">
+                <div class="space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Resolved Cases</span>
+                    <h3 class="text-3xl font-black text-emerald-400">87</h3>
+                </div>
+                <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl text-xl">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+            </div>
+            <div
+                class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-5 flex items-center justify-between shadow-xl transition hover:-translate-y-1 duration-200 w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]">
+                <div class="space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">In Progress</span>
+                    <h3 class="text-3xl font-black text-amber-400">25</h3>
+                </div>
+                <div class="p-3 bg-amber-500/10 text-amber-400 rounded-xl text-xl">
+                    <i class="fa-solid fa-spinner animate-spin"></i>
+                </div>
+            </div>
+            <div
+                class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-5 flex items-center justify-between shadow-xl transition hover:-translate-y-1 duration-200 w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)]">
+                <div class="space-y-1">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">Under Review</span>
+                    <h3 class="text-3xl font-black text-rose-500">12</h3>
+                </div>
+                <div class="p-3 bg-rose-500/10 text-rose-500 rounded-xl text-xl">
+                    <i class="fa-sharp fa-solid fa-hourglass"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+            <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 shadow-xl w-full lg:w-1/2">
+                <h3 class="text-sm font-bold tracking-wider uppercase text-slate-400 mb-4"><i
+                        class="fa-solid fa-chart-pie text-sky-400 mr-2"></i>Issue Categories Breakdown</h3>
+                <div class="relative w-full h-64 flex justify-center">
+                    <canvas id="categoriesPieChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 shadow-xl w-full lg:w-1/2">
+                <h3 class="text-sm font-bold tracking-wider uppercase text-slate-400 mb-4"><i
+                        class="fa-solid fa-chart-bar text-sky-400 mr-2"></i>Monthly Analytics Activity</h3>
+                <div class="relative w-full h-64">
+                    <canvas id="monthlyBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 shadow-xl space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <div>
+                    <h3 class="text-lg font-bold text-white">Recent Public Reports</h3>
+                    <p class="text-xs text-slate-400">All submitted regional emergency updates are visible to registered
+                        citizens below.</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-xl border border-slate-800 bg-[#111c2e]">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr
+                            class="bg-[#162238] text-slate-400 uppercase font-mono text-[11px] tracking-wider border-b border-slate-800">
+                            <th class="p-4">Issue Summary</th>
+                            <th class="p-4">Location Context</th>
+                            <!-- <th class="p-4 text-center">Priority</th> -->
+                            <th class="p-4 text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 text-sm">
+                        <tr class="hover:bg-slate-800/30 transition cursor-pointer"
+                            onclick="setActiveTimeline('Pothole Near Hospital', 'Kathmandu', 'High', 'In Progress')">
+                            <td class="p-4 font-semibold text-white">Pothole Near Hospital</td>
+                            <td class="p-4 text-slate-300"><i
+                                    class="fa-solid fa-location-dot text-rose-500 mr-1.5 text-xs"></i>Kathmandu</td>
+                            <!-- <td class="p-4 text-center"><span
+                                    class="px-2.5 py-1 bg-red-500/10 text-red-500 rounded-full text-xs font-bold border border-red-500/20">High</span>
+                            </td> -->
+                            <td class="p-4 text-center"><span
+                                    class="px-2.5 py-1 bg-sky-500/10 text-sky-400 rounded-full text-xs font-bold border border-sky-500/20">In
+                                    Progress</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/30 transition cursor-pointer"
+                            onclick="setActiveTimeline('Broken Street Light', 'Pokhara', 'Medium', 'Under Review')">
+                            <td class="p-4 font-semibold text-white">Broken Street Light</td>
+                            <td class="p-4 text-slate-300"><i
+                                    class="fa-solid fa-location-dot text-rose-500 mr-1.5 text-xs"></i>Pokhara</td>
+                            <!-- <td class="p-4 text-center"><span
+                                    class="px-2.5 py-1 bg-amber-500/10 text-amber-500 rounded-full text-xs font-bold border border-amber-500/20">Medium</span>
+                            </td> -->
+                            <td class="p-4 text-center"><span
+                                    class="px-2.5 py-1 bg-amber-500/10 text-amber-500 rounded-full text-xs font-bold border border-amber-500/20">Under
+                                    Review</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/30 transition cursor-pointer"
+                            onclick="setActiveTimeline('Garbage Dumping', 'Lalitpur', 'Low', 'Resolved')">
+                            <td class="p-4 font-semibold text-white">Garbage Dumping</td>
+                            <td class="p-4 text-slate-300"><i
+                                    class="fa-solid fa-location-dot text-rose-500 mr-1.5 text-xs"></i>Lalitpur</td>
+                            <!-- <td class="p-4 text-center"><span
+                                    class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold border border-emerald-500/20">Low</span>
+                            </td> -->
+                            <td class="p-4 text-center"><span
+                                    class="px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-bold border border-emerald-500/20">Resolved</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 shadow-xl space-y-6">
+            <div>
+                <h3 class="text-sm font-bold tracking-wider uppercase text-slate-400 flex items-center gap-2">
+                    <i class="fa-solid fa-bars-staggered text-sky-400"></i> Selected Case Lifecycle Track: <span
+                        id="active-case-name" class="text-white normal-case font-bold">Pothole Near Hospital</span>
+                </h3>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 pt-2 relative">
+                <div id="step-reported"
+                    class="flex-1 bg-sky-500/10 text-sky-400 border border-sky-500/30 rounded-xl p-4 flex flex-col items-center justify-center text-center space-y-1 shadow-md transition-all">
+                    <i class="fa-solid fa-paper-plane text-lg"></i>
+                    <span class="text-sm font-bold">Reported</span>
+                </div>
+                <div id="step-viewed"
+                    class="flex-1 bg-[#111c2e] text-slate-500 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center text-center space-y-1 shadow-md transition-all">
+                    <i class="fa-solid fa-eye text-lg"></i>
+                    <span class="text-sm font-bold">Viewed By Admin</span>
+                </div>
+                <div id="step-working"
+                    class="flex-1 bg-[#111c2e] text-slate-500 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center text-center space-y-1 shadow-md transition-all">
+                    <i class="fa-solid fa-person-digging text-lg"></i>
+                    <span class="text-sm font-bold">Crew Dispatched</span>
+                </div>
+                <div id="step-resolved"
+                    class="flex-1 bg-[#111c2e] text-slate-500 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center text-center space-y-1 shadow-md transition-all">
+                    <i class="fa-solid fa-check-double text-lg"></i>
+                    <span class="text-sm font-bold">Resolved</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src =" {{ url_for('static',filename='src/js/dashboard.js' )}}"></script>
+{% endblock %}

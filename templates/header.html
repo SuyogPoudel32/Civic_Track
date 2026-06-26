@@ -1,0 +1,35 @@
+<nav class="flex items-center justify-between px-[4rem] py-4 bg-[#111c2e]/80 backdrop-blur-[15px] shadow-md fixed top-0 left-0 w-full z-50 border-b border-slate-700/30">
+
+    <!-- Logo -->
+    <div class="text-2xl font-bold text-[#38bdf8]">
+        CivicTrack
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="hidden md:flex items-center gap-8 ">
+        <li><a href="#" class="text-gray-700 hover:text-blue-600 transition-all duration-300 text-white">Home</a></li>
+        <li><a href="dashboard.html" class="text-gray-700 hover:text-blue-600 transition-all duration-300 text-white">Dashboard</a></li>
+        <li><a href="report.html" class="text-gray-700 hover:text-blue-600 transition-all duration-300 text-white">Reports</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-600 transition-all duration-300 text-white">About</a></li>
+    </ul>
+
+    <!-- Auth Buttons -->
+    <div class="hidden md:flex items-center gap-4">
+        <a id="login" href="{{ url_for('login' ) }}"
+           class="px-5 py-2.5 border border-[#38bdf8] text-[#38bdf8] rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
+            Login
+        </a>
+
+        <a href="{{ url_for('register' ) }}"
+           class="px-5 py-2.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300">
+            Register
+        </a>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="md:hidden text-2xl cursor-pointer">
+        <i class="fas fa-bars"></i>
+    </div>
+
+</nav>
+

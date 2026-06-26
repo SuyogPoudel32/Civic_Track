@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="h-full flex flex-col justify-center items-center px-6">
+
+    <form id="verify_form" class="w-96">
+
+        <p class="text-slate-400 text-sm mb-4">
+            Verification code has been sent to your email.
+        </p>
+
+        <div class="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-lg px-4 py-3">
+            <i class="fa fa-lock text-slate-400"></i>
+
+            <input
+                id="verification_code"
+                name="verification_code"
+                type="text"
+                placeholder="Enter Verification Code"
+                class="flex-1 bg-transparent border-none outline-none text-white placeholder-slate-400">
+        </div>
+
+        <button
+            type="submit"
+            class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition">
+            Verify Code
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='src/js/register.js') }}"></script>
+{% endblock %}

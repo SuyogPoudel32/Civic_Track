@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0f172a] text-slate-200 p-4 md:p-8 pt-20 md:pt-24">
+    <div class="max-w-4xl mx-auto space-y-8">
+
+        <div class="border-b border-slate-700/50 pb-6">
+            <h1 class="text-3xl font-bold tracking-tight text-white flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-sky-400"></i> Report a Civic Issue
+            </h1>
+            <p class="text-slate-400 text-sm mt-1">Submit community infrastructure issues. You can upload multiple angles of evidence and pick your current location.</p>
+        </div>
+
+        <div class="bg-[#1e293b] rounded-2xl border border-slate-700/40 p-6 md:p-8 shadow-xl">
+            <form id="issue-form" enctype="multipart/form-data" class="space-y-6">
+
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="space-y-2 w-full md:w-1/2">
+                        <label for="issue-type" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                            Issue Category
+                        </label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-500">
+                                <i class="fa-solid fa-list-check"></i>
+                            </span>
+                            <select id="issue-type" name="issue_type" required
+                                class="w-full bg-[#111c2e] border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-slate-200 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 appearance-none cursor-pointer transition duration-150">
+                                <option value="" disabled selected class="text-slate-500">Choose type...</option>
+                                <!-- <option value="pothole">Potholes & Broken Roads</option>
+                                <option value="garbage">Garbage Dumping Pile</option>
+                                <option value="water_leakage">Water Main Leakage</option>
+                                <option value="street_light">Broken Street Lights</option>
+                                <option value="traffic_sign">Damaged Traffic Signs</option>
+                                <option value="Others">Others</option> -->
+                                <option value="1">Potholes & Broken Roads</option>
+                                <option value="2">Garbage Dumping Pile</option>
+                                <option value="3">Water Main Leakage</option>
+                                <option value="4">Broken Street Lights</option>
+                                <option value="5">Damaged Traffic Signs</option>
+                                <option value="6">Others</option>
+                            </select>
+                            <span class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-500 pointer-events-none">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 w-full md:w-1/2">
+                        <label for="issue-title" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                            Short Summary Heading
+                        </label>
+                        <input type="text" id="issue-title" name="title" required
+                            placeholder="e.g., Massive pothole near main crossroad"
+                            class="w-full bg-[#111c2e] border border-slate-700 rounded-xl px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition duration-150">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                        Evidence Capture Uploads (Select Multiple Together)
+                    </label>
+
+                    <div class="border-2 border-dashed border-slate-700 hover:border-sky-500/50 rounded-xl bg-[#111c2e] p-6 text-center transition relative group flex flex-col justify-center items-center min-h-[140px]">
+                        <input type="file" id="issue-images" name="issue_images" multiple accept="image/*"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <div class="space-y-2 text-slate-400 pointer-events-none" id="upload-prompt">
+                            <i class="fa-solid fa-images text-3xl text-sky-400 group-hover:scale-110 transition duration-150"></i>
+                            <p class="text-sm font-medium">Click to select files <span class="text-sky-400 font-bold">(Hold Ctrl to select multiple)</span></p>
+                            <p class="text-[11px] text-slate-500">Supports PNG, JPG (Max 5 images)</p>
+                        </div>
+                    </div>
+
+                    <div id="preview-container" class="flex flex-wrap gap-4 mt-4">
+                        </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <label for="issue-location" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                            Incident Location Address
+                        </label>
+
+                        <button type="button" id="geo-btn"
+                            class="text-xs bg-sky-500/10 hover:bg-sky-500/20 text-sky-400 border border-sky-500/30 px-3 py-1 rounded-lg flex items-center gap-1.5 transition duration-150">
+                            <i class="fa-solid fa-location-crosshairs text-xs"></i> Fetch Current Location GPS
+                        </button>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-500">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </span>
+                        <input type="text" id="issue-location" name="location" required
+                            placeholder="Type street name, ward number, or fetch GPS coordinates..."
+                            class="w-full bg-[#111c2e] border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition duration-150">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="issue-desc" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                        Detailed Report Description
+                    </label>
+                    <textarea id="issue-desc" name="description" rows="4" required
+                        placeholder="Provide structural details regarding the hazard layout..."
+                        class="w-full bg-[#111c2e] border border-slate-700 rounded-xl px-4 py-2.5 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition duration-150 resize-none"></textarea>
+                </div>
+
+                <div class="flex justify-end border-t border-slate-700/40 pt-4">
+                    <button type="submit"
+                        class="w-full md:w-auto bg-sky-500 hover:bg-sky-400 text-slate-900 font-bold px-8 py-3 rounded-xl shadow-lg shadow-sky-500/10 transition duration-150 text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Dispatch Official Incident Report
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="module" src="{{ url_for('static',filename='src/js/report_issue.js' ) }}"></script>
+{% endblock %}
