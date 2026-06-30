@@ -1,5 +1,5 @@
 import { error_message_throw } from "./js modules/tost.js"   // load the toast 
-class sop {
+class report_issue {
   constructor() {
     this.geo_btn = document.getElementById("geo-btn");
     this.issue_location = document.getElementById("issue-location");
@@ -106,4 +106,4 @@ class sop {
 
 
 
-const s = new sop();
+const s = new report_issue();

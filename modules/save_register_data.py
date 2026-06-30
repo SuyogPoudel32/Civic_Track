@@ -31,6 +31,7 @@ class Register:
             self.user_id = self.cursor.lastrowid
 
             self.conn.commit()
+            print("user saved")
             self.save_credentials()
             return True
 
@@ -49,7 +50,7 @@ class Register:
                 self.email,
                 self.password
             ))
-
+            print("Credentials saved")
             self.conn.commit()
 
             return True
