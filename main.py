@@ -22,14 +22,14 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'user_uploads'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = "D]?f] gfd suyog xf]"
+app.secret_key = ""
 
 import pymysql
 
 conn = pymysql.connect(
     host="localhost",
     user="root",
-    password="suyog123poudel",
+    password="",
     database="civic_issue_reporting_system"
 )
 cursor = conn.cursor()
